@@ -1,0 +1,27 @@
+name: Print the dates
+
+on: push
+
+jobs:
+  Job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Print the date
+        run: echo "The current date is $(date)"
+  Job2:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Print the date
+        run: echo "The current date is $(date)"
+  Job3:
+    needs: [Job1, Job2]
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Print the date
+        run: echo "The current date is $(date)"
